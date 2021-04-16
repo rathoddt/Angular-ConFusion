@@ -5,7 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms'; 
-
+import { HttpClientModule } from '@angular/common/http';
+//import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,11 +20,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import {MatSliderModule} from '@angular/material/slider'
 import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component'
 import {DishService} from './services/dish.service';
 import {LeaderService} from './services/leader.service'
+import {ProcessHTTPMsgService} from './services/process-httpmsg.service'
 import {PromotionService} from './services/promotion.service'
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -31,6 +33,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component'
+import {baseURL} from './shared/baseurl'
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,12 +64,18 @@ import { LoginComponent } from './login/login.component'
     MatSelectModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientModule,
+    MatSliderModule
+    
+    
   ],
   providers: [
     DishService,
     PromotionService,
-    LeaderService
+    LeaderService,  
+    ProcessHTTPMsgService,  
+    { provide: baseURL , useValue: "http://localhost:3000/" }
   ],
   entryComponents: [
     LoginComponent
