@@ -35,7 +35,7 @@
       </div>
     </div>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="display=='show'">
     <h3>Send us your Feedback</h3>
     <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
 
@@ -100,5 +100,19 @@
       </p>
       <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
     </form>
+  </div>
+  <div *ngIf="display=='response'">
+    <h2>Your Submission</h2>
+    <p>First Name: {{receivedFeedback.firstname}}</p>
+    <p>Last Name: {{receivedFeedback.lastname}}</p>
+    <p>Telphone No: {{receivedFeedback.telnum}}</p>
+    <p>Email: {{receivedFeedback.email}}</p>
+    <p>Agree: {{receivedFeedback.agree}}</p>
+    <p>Contact Yype: {{receivedFeedback.contacttype}}</p>
+    <p>Message:{{receivedFeedback.message}}</p>
+  </div>
+  <div fxFlex *ngIf="display=='wait'">
+    <h4>Loading... Please wait</h4>
+    <mat-spinner></mat-spinner>
   </div>
 </div>
